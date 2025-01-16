@@ -157,3 +157,21 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+function sendMail() {
+  let parms = {
+    name: document.getElementById("fullname").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  };
+
+  emailjs.send("service_4woc7mm", "template_4txrlhr", parms)
+    .then(function(response) {
+      alert("Message sent successfully!");
+      console.log("SUCCESS:", response.status, response.text);
+    })
+    .catch(function(error) {
+      alert("Failed to send message. Please try again.");
+      console.error("ERROR:", error);
+    });
+}
